@@ -31,12 +31,22 @@
             <a class="sortButton" href="#" onclick="refreshBoard(false);">Hide Weapon Names</a>
             <a class="sortButton" href="#" onclick="refreshBoard(true);">Show Weapon Names</a>
             <br>
-            <br>
             <h2>Random Weapon Assignment</h2>
             <input type="radio" id="randomIgnore" name="radioRandom" value="0">
             <label for="randomIgnore">Ignore Seed (Different weapon order per player)</label><br>
             <input type="radio" id="randomObey" name="radioRandom" value="1" checked>
-            <label for="randomObey">Obey Seed (Same weapon order per player)</label><br><br>
+            <label for="randomObey">Obey Seed (Same weapon order per player)</label><br>
+            <h2>Random Weapon Settings</h2>
+            <p>Weapon Pool</p>
+            <input type="radio" id="randomAll" name="radioPool" value="1" checked>
+            <label for="randomAll">All Splatoon 3 weapons</label><br>
+            <input type="radio" id="randomCardOnly" name="radioPool" value="0">
+            <label for="randomCardOnly">Only weapons on this card</label><br><br>
+            <p>Allow Repeats?</p>
+            <input type="radio" id="randomYesDuplicates" name="radioDuplicates" value="1">
+            <label for="randomYesDuplicates">Yes</label><br>
+            <input type="radio" id="randomNoDuplicates" name="radioDuplicates" value="0" checked>
+            <label for="randomNoDuplicates">No</label><br><br>
             <a class="sortButton" href="#" onclick="randomWeapon();">Randomize My Weapon</a>
             <br>
             <table>

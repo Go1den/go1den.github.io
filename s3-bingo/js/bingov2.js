@@ -1,4 +1,6 @@
 var bingoBoard = [];
+var randomWeaponPool = [];
+var isRandomWeaponsPoolPopulated = false;
 
 var bingo = function(weaponMap, size) {
 
@@ -338,28 +340,76 @@ function getAllWeapons() {
     return result;
 }
 
-function randomWeapon() {
-    var currentObj, img, name, idx;
-    var RNG;
-    var allWeapons = getAllWeapons();
-    console.log(allWeapons);
-    document.getElementById("randomWeapon").innerHTML = "";
+function disableCheckboxes() {
     if (document.getElementById("randomIgnore").checked === true) {
         document.getElementById("randomObey").disabled = true;
-        Math.seedrandom();
-        idx = Math.floor(allWeapons.length * Math.random()); //should be total chaos in random assignment
     } else {
         document.getElementById("randomIgnore").disabled = true;
-        idx = Math.floor(allWeapons.length * Math.random()); //should preserve seed order
     }
-    console.log(idx);
-    if (idx == allWeapons.length) { idx--; } //fix a miracle
-    currentObj = allWeapons[idx];
-    console.log("currentobj is :" + currentObj);
-    img = currentObj.image;
-    name = currentObj.name;
-    $('#randomWeapon').append("<td><image width=70px height=70px src=" + img + "></td>");
-    $('#randomWeapon').append("<td><strong style=\"color: orange\">Supplied Weapon</strong><br><strong style=\"color: white\">You have been loaned the " + name + "!</strong></td>");
+    if (document.getElementById("randomCardOnly").checked === true) {
+        document.getElementById("randomAll").disabled = true;
+    } else {
+        document.getElementById("randomCardOnly").disabled = true;
+    }
+    if (document.getElementById("randomNoDuplicates").checked === true) {
+        document.getElementById("randomYesDuplicates").disabled = true;
+    } else {
+        document.getElementById("randomNoDuplicates").disabled = true;
+    }
+}
+
+function populateRandomWeaponPool() {
+    if (!isRandomWeaponsPoolPopulated) {
+        if (document.getElementById("randomCardOnly").checked === true) {
+            randomWeaponPool = bingoBoard.slice(1);
+        } else {
+            randomWeaponPool = getAllWeapons();
+        }
+        isRandomWeaponsPoolPopulated = true;
+    }
+}
+
+function alterRNG() {
+    if (document.getElementById("randomIgnore").checked === true) {
+        Math.seedrandom();
+    }
+}
+
+function getIndex() {
+    var result;
+    result = Math.floor(randomWeaponPool.length * Math.random());
+    if (result == randomWeaponPool.length) {
+        result--;
+    }
+    return result;
+}
+
+function filterRandomWeaponPool(currentObj) {
+    if (document.getElementById("randomNoDuplicates").checked === true) {
+        randomWeaponPool = randomWeaponPool.filter(function(value) {
+            return value != currentObj;
+        });
+    }
+}
+
+function randomWeapon() {
+    var currentObj, img, name, idx;
+    document.getElementById("randomWeapon").innerHTML = "";
+    disableCheckboxes();
+    populateRandomWeaponPool();
+    alterRNG();
+    idx = getIndex();
+    currentObj = randomWeaponPool[idx];
+    filterRandomWeaponPool(currentObj);
+    if (currentObj === undefined) {
+        $('#randomWeapon').append("<td><image width=70px height=70px src=\"../sheldon/sheldon.png\"></td>");
+        $('#randomWeapon').append("<td><strong style=\"color: orange\">No More Weapons</strong><br><strong style=\"color: white\">There are no more weapons to loan!</strong></td>");
+    } else {
+        img = currentObj.image;
+        name = currentObj.name;
+        $('#randomWeapon').append("<td><image width=70px height=70px src=" + img + "></td>");
+        $('#randomWeapon').append("<td><strong style=\"color: orange\">Supplied Weapon</strong><br><strong style=\"color: white\">You have been loaned the " + name + "!</strong></td>");
+    }
     document.getElementById("randomWeapon").style = "background-color: grey";
 }
 

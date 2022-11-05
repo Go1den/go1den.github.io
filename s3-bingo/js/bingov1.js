@@ -1,4 +1,6 @@
 var bingoBoard = [];
+var randomWeaponPool = [];
+var isRandomWeaponsPoolPopulated = false;
 
 var bingo = function(bingoList, size, useMagicSquare) {
 
@@ -262,25 +264,80 @@ function refreshBoard(showNames) {
     }
 }
 
+function getAllWeapons() {
+    return bingoList[1];
+}
+
+function disableCheckboxes() {
+    if (document.getElementById("randomIgnore").checked === true) {
+        document.getElementById("randomObey").disabled = true;
+    } else {
+        document.getElementById("randomIgnore").disabled = true;
+    }
+    if (document.getElementById("randomCardOnly").checked === true) {
+        document.getElementById("randomAll").disabled = true;
+    } else {
+        document.getElementById("randomCardOnly").disabled = true;
+    }
+    if (document.getElementById("randomNoDuplicates").checked === true) {
+        document.getElementById("randomYesDuplicates").disabled = true;
+    } else {
+        document.getElementById("randomNoDuplicates").disabled = true;
+    }
+}
+
+function populateRandomWeaponPool() {
+    if (!isRandomWeaponsPoolPopulated) {
+        if (document.getElementById("randomCardOnly").checked === true) {
+            randomWeaponPool = bingoBoard.slice(1);
+        } else {
+            randomWeaponPool = getAllWeapons();
+        }
+        isRandomWeaponsPoolPopulated = true;
+    }
+}
+
+function alterRNG() {
+    if (document.getElementById("randomIgnore").checked === true) {
+        Math.seedrandom();
+    }
+}
+
+function getIndex() {
+    var result;
+    result = Math.floor(randomWeaponPool.length * Math.random());
+    if (result == randomWeaponPool.length) {
+        result--;
+    }
+    return result;
+}
+
+function filterRandomWeaponPool(currentObj) {
+    if (document.getElementById("randomNoDuplicates").checked === true) {
+        randomWeaponPool = randomWeaponPool.filter(function(value) {
+            return value != currentObj;
+        });
+    }
+}
+
 function randomWeapon() {
     var currentObj, img, name, idx;
     document.getElementById("randomWeapon").innerHTML = "";
-    if (document.getElementById("randomIgnore").checked === true) {
-        document.getElementById("randomObey").disabled = true;
-        Math.seedrandom();
-        idx = Math.floor(bingoList[1].length * Math.random()); //should be total chaos in random assignment
-        console.log(idx);
+    disableCheckboxes();
+    populateRandomWeaponPool();
+    alterRNG();
+    idx = getIndex();
+    currentObj = randomWeaponPool[idx];
+    filterRandomWeaponPool(currentObj);
+    if (currentObj === undefined) {
+        $('#randomWeapon').append("<td><image width=70px height=70px src=\"../sheldon/sheldon.png\"></td>");
+        $('#randomWeapon').append("<td><strong style=\"color: orange\">No More Weapons</strong><br><strong style=\"color: white\">There are no more weapons to loan!</strong></td>");
     } else {
-        document.getElementById("randomIgnore").disabled = true;
-        idx = Math.floor(bingoList[1].length * Math.random()); //should preserve seed order
-        console.log(idx);
+        img = currentObj.image;
+        name = currentObj.name;
+        $('#randomWeapon').append("<td><image width=70px height=70px src=" + img + "></td>");
+        $('#randomWeapon').append("<td><strong style=\"color: orange\">Supplied Weapon</strong><br><strong style=\"color: white\">You have been loaned the " + name + "!</strong></td>");
     }
-    if (idx == bingoList[1].length) { idx--; } //fix a miracle
-    currentObj = bingoList[1][idx];
-    img = currentObj.image;
-    name = currentObj.name;
-    $('#randomWeapon').append("<td><image width=70px height=70px src=" + img + "></td>");
-    $('#randomWeapon').append("<td><strong style=\"color: orange\">Supplied Weapon</strong><br><strong style=\"color: white\">You have been loaned the " + name + "!</strong></td>");
     document.getElementById("randomWeapon").style = "background-color: grey";
 }
 
