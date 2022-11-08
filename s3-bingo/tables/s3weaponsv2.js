@@ -34,7 +34,7 @@ var splatlingList = [
 ];
 
 var chargerList = [
-    {name: "Bamboozler 14 Mk", image: "../weapons/005.png", types: "Charger"},
+    {name: "Bamboozler 14 Mk I", image: "../weapons/005.png", types: "Charger"},
     {name: "Squiffer", image: "../weapons/010.png", types: "Charger"},
     {name: "E-liter 4K", image: "../weapons/015.png", types: "Charger"},
     {name: "E-liter 4K Scope", image: "../weapons/016.png", types: "Charger"},
@@ -54,7 +54,7 @@ var blasterList = [
 
 var slosherList = [
     {name: "Bloblobber", image: "../weapons/007.png", types: "Slosher"},
-    {name: "Exsplosher", image: "../weapons/017.png", types: "Slosher"},
+    {name: "Explosher", image: "../weapons/017.png", types: "Slosher"},
     {name: "Slosher", image: "../weapons/037.png", types: "Slosher"},
     {name: "Sloshing Machine", image: "../weapons/038.png", types: "Slosher"},
     {name: "Tri-Slosher", image: "../weapons/053.png", types: "Slosher"}
@@ -70,7 +70,7 @@ var rollerList = [
 var dualiesList = [
     {name: "Dapple Dualies", image: "../weapons/011.png", types: "Dualies"},
     {name: "Dark Tetra Dualies", image: "../weapons/012.png", types: "Dualies"},
-    {name: "Dualie Squlechers", image: "../weapons/013.png", types: "Dualies"},
+    {name: "Dualie Squelchers", image: "../weapons/013.png", types: "Dualies"},
     {name: "Glooga Dualies", image: "../weapons/019.png", types: "Dualies"},
     {name: "Splat Dualies", image: "../weapons/042.png", types: "Dualies"}
 ];
