@@ -2,12 +2,6 @@ var bingoList = [];
 
 const weaponMap = new Map();
 
-var brellaList = [
-    {name: "Splat Brella", image: "../weapons/040.png", types: "Brella"},
-    {name: "Tenta Brella", image: "../weapons/052.png", types: "Brella"},
-    {name: "Undercover Brella", image: "../weapons/055.png", types: "Brella"}
-];
-
 var shooterList = [
     {name: ".52 Gal", image: "../weapons/001.png", types: "Shooter"},
     {name: ".96 Gal", image: "../weapons/002.png", types: "Shooter"},
@@ -60,13 +54,6 @@ var slosherList = [
     {name: "Tri-Slosher", image: "../weapons/053.png", types: "Slosher"}
 ];
 
-var rollerList = [
-    {name: "Carbon Roller", image: "../weapons/008.png", types: "Roller"},
-    {name: "Dynamo Roller", image: "../weapons/014.png", types: "Roller"},
-    {name: "Flingza Roller", image: "../weapons/018.png", types: "Roller"},
-    {name: "Splat Roller", image: "../weapons/043.png", types: "Roller"}
-];
-
 var dualiesList = [
     {name: "Dapple Dualies", image: "../weapons/011.png", types: "Dualies"},
     {name: "Dark Tetra Dualies", image: "../weapons/012.png", types: "Dualies"},
@@ -75,31 +62,32 @@ var dualiesList = [
     {name: "Splat Dualies", image: "../weapons/042.png", types: "Dualies"}
 ];
 
-var brushList = [
+var brushRollerList = [
     {name: "Inkbrush", image: "../weapons/025.png", types: "Brush"},
-    {name: "Octobrush", image: "../weapons/032.png", types: "Brush"}
+    {name: "Octobrush", image: "../weapons/032.png", types: "Brush"},
+    {name: "Carbon Roller", image: "../weapons/008.png", types: "Roller"},
+    {name: "Dynamo Roller", image: "../weapons/014.png", types: "Roller"},
+    {name: "Flingza Roller", image: "../weapons/018.png", types: "Roller"},
+    {name: "Splat Roller", image: "../weapons/043.png", types: "Roller"}
 ];
 
-var stringerList = [
-    {name: "REEF-LUX 450", image: "../weapons/036.png", types: "Stringer"},
-    {name: "Tri-Stringer", image: "../weapons/054.png", types: "Stringer"}
-];
-
-var splatanaList = [
+var miscList = [
     {name: "Splatana Stamper", image: "../weapons/044.png", types: "Splatana"},
-    {name: "Splatana Wiper", image: "../weapons/045.png", types: "Splatana"}
-];
+    {name: "Splatana Wiper", image: "../weapons/045.png", types: "Splatana"},
+    {name: "REEF-LUX 450", image: "../weapons/036.png", types: "Stringer"},
+    {name: "Tri-Stringer", image: "../weapons/054.png", types: "Stringer"},
+    {name: "Splat Brella", image: "../weapons/040.png", types: "Brella"},
+    {name: "Tenta Brella", image: "../weapons/052.png", types: "Brella"},
+    {name: "Undercover Brella", image: "../weapons/055.png", types: "Brella"}
+]
 
-weaponMap.set('Brella', brellaList);
 weaponMap.set('Shooter', shooterList);
 weaponMap.set('Splatling', splatlingList);
 weaponMap.set('Charger', chargerList);
 weaponMap.set('Blaster', blasterList);
 weaponMap.set('Slosher', slosherList);
-weaponMap.set('Roller', rollerList);
 weaponMap.set('Dualies', dualiesList);
-weaponMap.set('Brush', brushList);
-weaponMap.set('Stringer', stringerList);
-weaponMap.set('Splatana', splatanaList);
+weaponMap.set('BrushRoller', brushRollerList);
+weaponMap.set('Misc', miscList);
 
 $(function() { srl.bingo(weaponMap); });

@@ -342,6 +342,7 @@ function randomWeapon() {
 }
 
 function reseedPage() {
+	Math.seedrandom();
 	var qSeed = "?seed=" + Math.ceil(999999 * Math.random());
 	window.location = qSeed;
 	return false;

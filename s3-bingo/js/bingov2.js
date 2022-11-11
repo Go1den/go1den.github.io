@@ -2,7 +2,7 @@ var bingoBoard = [];
 var randomWeaponPool = [];
 var isRandomWeaponsPoolPopulated = false;
 
-var bingo = function(weaponMap, size) {
+var bingo = function(weaponMap) {
 
 	function gup( name ) {
 		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
@@ -14,26 +14,15 @@ var bingo = function(weaponMap, size) {
 		return results[1];
 	}
 
-	var LANG = gup( 'lang' );
-	if (LANG == '') LANG = 'name';
 	var SEED = gup( 'seed' );
-	var MODE = gup( 'mode' );
-
 	if(SEED == "") return reseedPage();
-
-	var cardtype = "Normal";
-
-	if (typeof size == 'undefined') size = 5;
-
 	Math.seedrandom(SEED); //sets up the RNG
-	var MAX_SEED = 999999; //1 million cards
 	var results = $("#results");
 	results.append ("<p>Splatoon 3 Weapons Bingo <strong>v2</strong>&emsp;Seed: <strong>" +
 	SEED + "</strong></p><p>&emsp;Join us on <strong><a href=\"https://discord.gg/CErcb4gVqE\">Discord</a></strong></p></p>");
 
 	$('.popout').click(function() {
 	    refreshBoard(false);
-		var mode = null;
 		var line = $(this).attr('id');
 		var name = $(this).html();
 		var items = [];
@@ -321,6 +310,7 @@ function randomWeapon() {
 }
 
 function reseedPage() {
+    Math.seedrandom();
 	var qSeed = "?seed=" + Math.ceil(999999 * Math.random());
 	window.location = qSeed;
 	return false;
