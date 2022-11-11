@@ -1,8 +1,8 @@
 class WeaponRandomizer {
-    constructor(bingoBoard, isUsingAllWeapons, isAllowingRepeats, isIgnoreSeed) {
+    constructor(bingoBoard, seed, isUsingAllWeapons, isAllowingRepeats, isIgnoreSeed) {
         this.weaponMap = bingoBoard.weaponMap;
         this.board = bingoBoard.board;
-        this.seed = bingoBoard.seed;
+        this.seed = seed;
         this.isIgnoreSeed = isIgnoreSeed;
         this.isUsingAllWeapons = isUsingAllWeapons;
         this.isAllowingRepeats = isAllowingRepeats;
@@ -36,14 +36,6 @@ class WeaponRandomizer {
         }
     }
 
-    //By default, we use the seed associated with the bingo card. 
-    //You should only have to set this if you're looking to roll the same weapon sequence for every player.
-    //In an all weapons bingo, the sequence will be identical for everyone.
-    setSeed(seed) { 
-        this.seed = seed;
-    }
-
-
     #getAllWeapons() {
         let result = [];
         let mapKeys = Array.from(this.weaponMap.keys());
@@ -62,6 +54,7 @@ class WeaponRandomizer {
         if (this.isIgnoreSeed) {
             Math.seedrandom();
         } else {
+            console.log(this.seed);
             Math.seedrandom(this.seed);
         }
         let tempPool;

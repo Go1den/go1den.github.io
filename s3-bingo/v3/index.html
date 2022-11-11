@@ -34,10 +34,16 @@
             <a class="sortButton" href="#" onclick="refreshBoard(true);">Show Weapon Names</a>
             <br>
             <h2>Random Weapon Assignment</h2>
-            <input type="radio" id="randomIgnore" name="radioRandom" value="0">
-            <label for="randomIgnore">Ignore Seed (Different weapon order per player)</label><br>
-            <input type="radio" id="randomObey" name="radioRandom" value="1" checked>
-            <label for="randomObey">Obey Seed (Same weapon order per player)</label><br>
+            <input type="radio" id="randomIgnore" name="radioRandom" onclick="disableSeed()" value="0">
+            <label for="randomIgnore">Ignore Seed</label><br>
+            Different weapon order per player playing this exact card<br>
+            <input type="radio" id="randomObey" name="radioRandom" value="1" onclick="disableSeed()" checked>
+            <label for="randomObey">Use This Card's Seed</label><br>
+            Same weapon order for every player playing this exact card<br>
+            <input type="radio" id="randomSet" name="radioRandom" value="2" onclick="enableSeed()">
+            <label for="randomSet">Set My Own Seed:&nbsp;&nbsp;</label>
+            <input type="number" id="mySeed" name="inputSeed" min="1" max="999999" disabled><br>
+            Same weapon order for every player playing any card if this number is the same. Enter a number between 1 and 999999.
             <h2>Random Weapon Settings</h2>
             <p>Weapon Pool</p>
             <input type="radio" id="randomCardOnly" name="radioPool" value="0" checked>

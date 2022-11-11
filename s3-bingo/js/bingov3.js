@@ -83,8 +83,13 @@ function refreshBoard(showNames) {
 function disableCheckboxes() {
     if (document.getElementById("randomIgnore").checked === true) {
         document.getElementById("randomObey").disabled = true;
+        document.getElementById("randomSet").disabled = true;
+    } else if (document.getElementById("randomObey").checked === true) {
+        document.getElementById("randomIgnore").disabled = true;
+        document.getElementById("randomSet").disabled = true;
     } else {
         document.getElementById("randomIgnore").disabled = true;
+        document.getElementById("randomObey").disabled = true;
     }
     if (document.getElementById("randomCardOnly").checked === true) {
         document.getElementById("randomAll").disabled = true;
@@ -108,11 +113,16 @@ function initializeRandomizer() {
     if (document.getElementById("randomNoDuplicates").checked === true) {
         isAllowingRepeats = false;
     }
-    let isIgnoreSeed = true;
-    if (document.getElementById("randomObey").checked === true) {
-        isIgnoreSeed = false;
+    let isIgnoreSeed = false;
+    if (document.getElementById("randomIgnore").checked === true) {
+        isIgnoreSeed = true;
     }
-    myWeaponRandomizer = new WeaponRandomizer(myBingoBoard, isUsingAllWeapons, isAllowingRepeats, isIgnoreSeed);
+    let seed = myBingoBoard.seed;
+    if (document.getElementById("randomSet").checked === true) {
+        seed = document.getElementById("mySeed").value;
+    }
+    console.log(seed);
+    myWeaponRandomizer = new WeaponRandomizer(myBingoBoard, seed, isUsingAllWeapons, isAllowingRepeats, isIgnoreSeed);
 }
 
 function updateRandomWeapon(currentObj) {
@@ -141,6 +151,14 @@ function randomWeaponPrevious() {
         document.getElementById("randomWeapon").innerHTML = "";
         updateRandomWeapon(myWeaponRandomizer.previousWeapon());
     }
+}
+
+function disableSeed() {
+    document.getElementById("mySeed").disabled = true;
+}
+
+function enableSeed() {
+    document.getElementById("mySeed").disabled = false;
 }
 
 function reseedPage() {
