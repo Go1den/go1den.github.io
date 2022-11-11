@@ -80,7 +80,7 @@ function refreshBoard(showNames) {
     }
 }
 
-function disableCheckboxes() {
+function disableSettingsFields() {
     if (document.getElementById("randomIgnore").checked === true) {
         document.getElementById("randomObey").disabled = true;
         document.getElementById("randomSet").disabled = true;
@@ -101,10 +101,11 @@ function disableCheckboxes() {
     } else {
         document.getElementById("randomNoDuplicates").disabled = true;
     }
+    document.getElementById("mySeed").disabled = true;
 }
 
 function initializeRandomizer() {
-    disableCheckboxes();
+    disableSettingsFields();
     let isUsingAllWeapons = true;
     if (document.getElementById("randomCardOnly").checked === true) {
         isUsingAllWeapons = false;
