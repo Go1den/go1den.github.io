@@ -98,40 +98,6 @@ function disableCheckboxes() {
     }
 }
 
-function populateRandomWeaponPool() {
-    if (!isRandomWeaponsPoolPopulated) {
-        if (document.getElementById("randomCardOnly").checked === true) {
-            randomWeaponPool = bingoBoard.slice(1);
-        } else {
-            randomWeaponPool = getAllWeapons();
-        }
-        isRandomWeaponsPoolPopulated = true;
-    }
-}
-
-function alterRNG() {
-    if (document.getElementById("randomIgnore").checked === true) {
-        Math.seedrandom();
-    }
-}
-
-function getIndex() {
-    var result;
-    result = Math.floor(randomWeaponPool.length * Math.random());
-    if (result == randomWeaponPool.length) {
-        result--;
-    }
-    return result;
-}
-
-function filterRandomWeaponPool(currentObj) {
-    if (document.getElementById("randomNoDuplicates").checked === true) {
-        randomWeaponPool = randomWeaponPool.filter(function(value) {
-            return value != currentObj;
-        });
-    }
-}
-
 function initializeRandomizer() {
     disableCheckboxes();
     let isUsingAllWeapons = true;
