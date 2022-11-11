@@ -22,7 +22,7 @@ var bingo = function(weaponMap) {
     myBingoBoard = new BingoBoard(weaponMap, SEED);
 
 	var results = $("#results");
-	results.append ("<p>Splatoon 3 Weapons Bingo <strong>v2</strong>&emsp;Seed: <strong>" +
+	results.append ("<p>Splatoon 3 Weapons Bingo <strong>v3</strong>&emsp;Seed: <strong>" +
 	SEED + "</strong></p><p>&emsp;Join us on <strong><a href=\"https://discord.gg/CErcb4gVqE\">Discord</a></strong></p></p>");
 
 	$('.popout').click(function() {
@@ -108,7 +108,11 @@ function initializeRandomizer() {
     if (document.getElementById("randomNoDuplicates").checked === true) {
         isAllowingRepeats = false;
     }
-    myWeaponRandomizer = new WeaponRandomizer(myBingoBoard, isUsingAllWeapons, isAllowingRepeats);
+    let isIgnoreSeed = true;
+    if (document.getElementById("randomObey").checked === true) {
+        isIgnoreSeed = false;
+    }
+    myWeaponRandomizer = new WeaponRandomizer(myBingoBoard, isUsingAllWeapons, isAllowingRepeats, isIgnoreSeed);
 }
 
 function updateRandomWeapon(currentObj) {

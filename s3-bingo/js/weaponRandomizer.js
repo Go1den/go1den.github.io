@@ -1,8 +1,9 @@
 class WeaponRandomizer {
-    constructor(bingoBoard, isUsingAllWeapons, isAllowingRepeats) {
+    constructor(bingoBoard, isUsingAllWeapons, isAllowingRepeats, isIgnoreSeed) {
         this.weaponMap = bingoBoard.weaponMap;
         this.board = bingoBoard.board;
         this.seed = bingoBoard.seed;
+        this.isIgnoreSeed = isIgnoreSeed;
         this.isUsingAllWeapons = isUsingAllWeapons;
         this.isAllowingRepeats = isAllowingRepeats;
         this.pool = this.setupPool();
@@ -58,7 +59,11 @@ class WeaponRandomizer {
     //This is called during construction, but can also be called to rerun the generation, say after calling setSeed to change the rng.
     setupPool() {
         this.index = -1;
-        Math.seedrandom(this.seed);
+        if (this.isIgnoreSeed) {
+            Math.seedrandom();
+        } else {
+            Math.seedrandom(this.seed);
+        }
         let tempPool;
         if (this.isUsingAllWeapons) {
             tempPool = this.#getAllWeapons();

@@ -24,7 +24,7 @@ class BingoBoard {
     }
 
     #setupBoard() {
-        let tempWeaponsMap = new Map(this.weaponMap); //Don't alter the actual map
+        let tempWeaponsMap = new Map(JSON.parse(JSON.stringify([...this.weaponMap]))) //Deep copy the map
         let keys = Array.from(tempWeaponsMap.keys());
         keys.push('Shooter'); //Put this in twice because there are enough shooters, we can afford 10 of them on a board
         let chosenKeys = [];
