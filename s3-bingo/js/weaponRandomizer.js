@@ -72,10 +72,14 @@ class WeaponRandomizer {
             }
         } else {
             result = new Array(tempPool.length);
-            for(let i=0; i<tempPool.length; i++) {
+            let tempLength = tempPool.length;
+            for(let i=0; i<tempLength; i++) {
+                console.log(tempPool.length);
                 let index = Math.floor(Math.random() * tempPool.length);
                 result[i] = tempPool[index];
-                tempPool.slice(index, 1);
+                tempPool = tempPool.filter(function(value) {
+                    return value != result[i];
+                });
             }
         }
         return result;
