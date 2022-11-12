@@ -48,13 +48,11 @@ class WeaponRandomizer {
         return result;
     }
 
-    //This is called during construction, but can also be called to rerun the generation, say after calling setSeed to change the rng.
     setupPool() {
         this.index = -1;
         if (this.isIgnoreSeed) {
             Math.seedrandom();
         } else {
-            console.log(this.seed);
             Math.seedrandom(this.seed);
         }
         let tempPool;
@@ -74,7 +72,6 @@ class WeaponRandomizer {
             result = new Array(tempPool.length);
             let tempLength = tempPool.length;
             for(let i=0; i<tempLength; i++) {
-                console.log(tempPool.length);
                 let index = Math.floor(Math.random() * tempPool.length);
                 result[i] = tempPool[index];
                 tempPool = tempPool.filter(function(value) {

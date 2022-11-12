@@ -6,23 +6,29 @@ var myWeaponRandomizer;
 
 var bingo = function(weaponMap) {
 
-	function gup( name ) {
-		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-		var regexS = "[\\?&]"+name+"=([^&#]*)";
-		var regex = new RegExp( regexS );
-		var results = regex.exec( window.location.href );
-		if(results == null)
-			 return "";
-		return results[1];
-	}
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
 
-	var SEED = gup( 'seed' );
-	if(SEED == "") return reseedPage();
+    let SEED = urlParams.get('seed');
+	if(SEED === undefined || SEED === null || SEED === "") {
+        return reseedPage(true);
+    }
 	Math.seedrandom(SEED); //sets up the RNG
-    myBingoBoard = new BingoBoard(weaponMap, SEED);
+
+    let MODE = urlParams.get('mode');
+    if (MODE === undefined || MODE === null || MODE.toLowerCase() !== "chaos") {
+        MODE = "normal";
+    }
+
+    let isBalancedCard = true;
+    if(MODE.toLowerCase() == "chaos") {
+        isBalancedCard = false;
+    }
+
+    myBingoBoard = new BingoBoard(weaponMap, SEED, isBalancedCard);
 
 	var results = $("#results");
-	results.append ("<p>Splatoon 3 Weapons Bingo <strong>v3</strong>&emsp;Seed: <strong>" +
+	results.append ("<p>Splatoon 3 Weapons Bingo <strong>v3</strong>&emsp;Mode: <strong>" + MODE[0].toUpperCase() + MODE.substring(1) + "</strong>&emsp;Seed: <strong>" +
 	SEED + "</strong></p><p>&emsp;Join us on <strong><a href=\"https://discord.gg/CErcb4gVqE\">Discord</a></strong></p></p>");
 
 	$('.popout').click(function() {
@@ -122,7 +128,6 @@ function initializeRandomizer() {
     if (document.getElementById("randomSet").checked === true) {
         seed = document.getElementById("mySeed").value;
     }
-    console.log(seed);
     myWeaponRandomizer = new WeaponRandomizer(myBingoBoard, seed, isUsingAllWeapons, isAllowingRepeats, isIgnoreSeed);
 }
 
@@ -162,10 +167,13 @@ function enableSeed() {
     document.getElementById("mySeed").disabled = false;
 }
 
-function reseedPage() {
+function reseedPage(isBalancedCard) {
     Math.seedrandom();
-	var qSeed = "?seed=" + Math.ceil(999999 * Math.random());
-	window.location = qSeed;
+	var urlParams = "?seed=" + Math.ceil(999999 * Math.random());
+    if (!isBalancedCard) {
+        urlParams = urlParams + "&mode=chaos";
+    }
+	window.location = urlParams;
 	return false;
 }
 

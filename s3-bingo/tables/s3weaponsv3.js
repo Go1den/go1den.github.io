@@ -7,7 +7,6 @@ var shooterList = [
     {name: ".96 Gal", image: "../weapons/002.png", types: "Shooter"},
     {name: "Aerospray MG", image: "../weapons/003.png", types: "Shooter"},
     {name: "H-3 Nozzlenose", image: "../weapons/021.png", types: "Shooter"},
-    {name: "Hero Shot Replica", image: "../weapons/023.png", types: "Shooter"},
     {name: "Jet Squelcher", image: "../weapons/026.png", types: "Shooter"},
     {name: "L-3 Nozzlenose", image: "../weapons/027.png", types: "Shooter"},
     {name: "N-ZAP '85", image: "../weapons/030.png", types: "Shooter"},
