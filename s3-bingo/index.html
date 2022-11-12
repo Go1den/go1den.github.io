@@ -1,22 +1,76 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Splatoon 3 Weapons Bingo</title>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link href="css/mainpage.css" rel="stylesheet">
 </head>
 <body>
-    <div>
-    <h1>Splatoon 3 Weapons Bingo</h1>
-    <h2>Discord</h2>
-    <p><a href="https://discord.gg/MBcX65DY8d">CLICK HERE AND JOIN OUR FRESH NEW DISCORD SERVER!</a></p>
-    <h2>Recent News</h2>
-    <p><strong>11/5/2022:</strong> Version 3 released!</p>
-    <p><strong>11/5/2022:</strong> Added additional randomizer settings. You can now choose the weapon pool and whether or not repeats are allowed.</p>
-    <h2>Latest Version</h2>
-    <h2><a href="v3/">Version 3</a></h2>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <img src="images/splatoon3bingo.png" style="width:100%" onclick="onClick(this)" alt="Splatoon 3 Bingo"/><br><br>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">NEWS</a><br>
+    <a href="#latestversion" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">LATEST VERSION</a><br>
+    <a href="#howtoplay" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">HOW TO PLAY</a><br> 
+    <a href="#discord" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">DISCORD</a><br> 
+    <a href="#obs" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">OBS PLUGIN</a><br> 
+    <a href="#pastversions" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">PAST VERSIONS</a> 
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-margin-right" onclick="w3_open()">☰</a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:20px" id="news">
+    <h1 class="w3-jumbo"><strong>Splatoon 3 Bingo</strong></h1>
+    <h1 class="w3-xxxlarge"><strong>News</strong></h1>
+    <hr class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-container">
+        <p><strong>11/5/2022:</strong> Version 3 released!</p>
+        <p><strong>11/5/2022:</strong> Added additional randomizer settings. You can now choose the weapon pool and whether or not repeats are allowed.</p>
+    </div>
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Latest Version -->
+  <div class="w3-container" id="latestversion" style="margin-top:50px">
+    <h1 class="w3-xxxlarge"><strong>Latest Version</strong></h1>
+    <hr class="w3-round">
+    <h2><a class="sortButton" href="v3/">Version 3</a></h2>
     <p><strong>Release Date 11/11/2022</strong></p>
     <p>Changes:</p>
+        <iframe width="480" height="270"
+        src="https://www.youtube.com/embed/99JIGkcP4ns">
+        </iframe>
         <ul>
             <li>There are two different types of boards now.</li><br>
             <strong>Normal Mode:</strong> This is the most balanced version of bingo to date. The board now has multiple configurations, and each row, column, and diagonal is designed to be tightly balanced.</li>
@@ -31,8 +85,43 @@
             <li>Please note older versions will not be supported going forward, so the new features in version 3 will only apply here.</li>
         </ul>
     <br>
-    <h2>Older Versions</h2>
-    <h2><a href="v2/">Version 2</a></h2>
+  </div>
+  
+  <!-- How to Play -->
+  <div class="w3-container" id="howtoplay" style="margin-top:50px">
+    <h1 class="w3-xxxlarge"><strong>How to Play</strong></h1>
+    <hr class="w3-round">
+    <p>Watch this brief video for an explanation of how to play. Ultimately, you can play with whatever rules you prefer. These are suggestions.</p>
+    <iframe width="480" height="270" src="https://www.youtube.com/embed/SUR7fa4PqMs"></iframe>
+    <p>Some suggested ways to play:</p>
+    <p><strong>Team Comp Bingo (Easy, Luck/Skill Mix)</strong> Whenever your team wins a game of Splatoon 3 in the chosen game mode, mark off all weapons that were present on the winning team, including your own. Once a square is marked green, you CANNOT use that weapon again.</p>
+    <p><strong>Normal Bingo (Medium, Skill Based)</strong> Select your weapon each game. Mark off the square containing your current weapon when you win a game. This is traditional speedrunning bingo, which emphasizes skill in selecting the fastest row.</p>
+    <p><strong>Randomizer Bingo (Hard, Luck Based)</strong> Use the randomizer to select your weapon. You must play that weapon until you win a game. When you do, if it is on your card, mark it off and roll again.</p>
+    <p><strong>Solo Lockout Challenge</strong> In this solo variant, mark squares green when you win with the weapon and red when you lose with that weapon. Can you get a bingo without getting locked out?</p>
+  </div>
+
+  <!-- Discord -->
+  <div class="w3-container" id="discord" style="margin-top:50px">
+    <h1 class="w3-xxxlarge"><strong>Discord</strong></h1>
+    <hr class="w3-round">
+    <p>Our Discord server has over 50 members currently. Advertise your bingo streams, find others to play bingo with, and provide feedback and suggestions for future updates.</p>
+    <h2><a class="sortButton" href="https://discord.gg/MBcX65DY8d">Join our Discord</a></h2>
+  </div>
+
+  <!-- OBS plugin -->
+  <div class="w3-container" id="obs" style="margin-top:50px">
+    <h1 class="w3-xxxlarge"><strong>OBS Plugin</strong></h1>
+    <hr class="w3-round">
+    <p><a href="https://twitch.tv/squidcharger"/>Squidcharger</a> has developed an OBS plugin for Splatoon 3 Bingo.</p>
+    <h2><a class="sortButton" href="https://bingo.splat.pw">OBS Plugin</a></h2>
+    <p>Note: The OBS plugin is unofficially maintained and may at times be out of sync with the latest changes. We will work to keep it up to date, but the website will always have the latest changes.</p>
+  </div>
+
+  <!-- Past Versions -->
+  <div class="w3-container" id="pastversions" style="margin-top:50px">
+    <h1 class="w3-xxxlarge"><strong>Past Versions</strong></h1>
+    <hr class="w3-round">
+    <h2><a class="sortButton" href="v2/">Version 2</a></h2>
     <p><strong>Release Date 11/2/2022</strong></p>
     <p>Changes:</p>
         <ul>
@@ -40,13 +129,35 @@
             <li>Play this version if you want each row on the card to have better average balance.</li>
         </ul>
     <br>
-    <h2><a href="v1/">Version 1</a></h2>
+    <h2><a class="sortButton" href="v1/">Version 1</a></h2>
     <p><strong>Release Date 10/23/2022</strong></p>
     <p>Notes:</p>
     <ul>
-        <li>Version 1 had no weapon bias in generating the cards. Any square on the board could contain any weapon, without care or consideration put into what other weapons were already in that row.</li>
+        <li>Version 1 had no weapon bias in card generation. Any square could contain any weapon, without care or consideration put into what other weapons were already in that row.</li>
         <li>Play this version if you want truly chaotic, sometimes easy, sometimes evil bingo cards.</li>
     </ul>
     </div>
+    <br>
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:50px;padding-right:58px"><p class="w3-right">Created by Go1den © 2022. All rights reserved.</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
 </body>
 </html>
