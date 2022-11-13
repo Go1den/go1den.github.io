@@ -36,7 +36,7 @@ class WeaponRandomizer {
         }
     }
 
-    #getAllWeapons() {
+    getAllWeapons() {
         let result = [];
         let mapKeys = Array.from(this.weaponMap.keys());
         for (let key in mapKeys) {
@@ -57,7 +57,7 @@ class WeaponRandomizer {
         }
         let tempPool;
         if (this.isUsingAllWeapons) {
-            tempPool = this.#getAllWeapons();
+            tempPool = this.getAllWeapons();
         } else {
             tempPool = this.board.slice();
         }

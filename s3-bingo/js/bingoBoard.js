@@ -17,22 +17,22 @@ class BingoBoard {
         this.weaponMap = weaponMap;
         this.isBalancedCard = isBalancedCard;
         this.template = this.#allTemplates[Math.floor(Math.random() * this.#allTemplates.length)];
-        this.board = this.#setupBoard();
+        this.board = this.setupBoard();
     }
 
     getBoard() {
         return this.board;
     }
 
-    #setupBoard() {
+    setupBoard() {
         if (this.isBalancedCard) {
-            return this.#getBalancedBoard();
+            return this.getBalancedBoard();
         } else {
-            return this.#getUnbalancedBoard();
+            return this.getUnbalancedBoard();
         }   
     }
 
-    #getUnbalancedBoard() {
+    getUnbalancedBoard() {
         let board = new Array(25);
         let tempWeapons = [];
         let tempKeys = Array.from(this.weaponMap.keys());
@@ -51,7 +51,7 @@ class BingoBoard {
         return board;
     }
 
-    #getBalancedBoard() {
+    getBalancedBoard() {
         let board = new Array(25);
         let tempWeaponsMap = new Map(JSON.parse(JSON.stringify([...this.weaponMap]))) //Deep copy the map
         let keys = Array.from(tempWeaponsMap.keys());
