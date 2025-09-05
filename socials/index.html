@@ -9,16 +9,16 @@
         <meta name="twitter:site" content="@GoldenSRL" />
         <meta name="twitter:title" content="Go1den.com" />
         <meta name="twitter:description" content="The Golden Voice" />
-        <meta name="twitter:image" content="images/goldenlogo.png" />
+        <meta name="twitter:image" content="../images/goldenlogo.png" />
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="css/mainPage.css">
+        <link rel="stylesheet" href="../css/mainPage.css">
     </head>
     <body>
         <!-- Sidebar/menu -->
         <nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
         <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
         <div class="w3-container">
-            <center><img src="images/goldenlogo.png" onclick="onClick(this)" alt="Go1den.com"/></center><br>
+            <center><a href="../"><img src="../images/goldenlogo.png" onclick="onClick(this)" alt="Go1den.com"/></a></center><br>
         </div>
         <div class="w3-bar-block">
             <a href="/games" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Games</a><br>
@@ -44,42 +44,34 @@
             <h1>Hi. I'm Go1den. Here's some cool stuff for you to enjoy.</h1> 
         </div>
 
-        <!-- Stream -->
-        <div class="w3-container" id="stream" style="margin-top:20px">
-            <!-- Add a placeholder for the Twitch embed -->
-            <div id="twitch-embed"></div>
-
-            <!-- Load the Twitch embed JavaScript file -->
-            <script src="https://embed.twitch.tv/embed/v1.js"></script>
-
-            <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
-            <script type="text/javascript">
-            new Twitch.Embed("twitch-embed", {
-                width: 854,
-                height: 480,
-                channel: "go1den",
-                // Only needed if this page is going to be embedded on other websites
-                // parent: ["embed.example.com", "othersite.example.com"]
-            });
-            </script>
+        <!-- Socials -->
+        <div class="w3-container" id="socials" style="margin-top:20px">
+            <h1 class="w3-xxlarge"><strong>Socials</strong></h1>
+            <hr class="w3-round">
+            <ul>
+                <li><a href="https://twitch.tv/go1den">Twitch</a></li>
+                <li><a href="https://bsky.app/profile/go1den.bsky.social">Bluesky</a></li>
+                <li><a href="https://youtube.com/@GoldenSRL">Youtube</a></li>
+            </ul>
         </div>
 
-        <!-- W3.CSS Container -->
-        <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:20px;padding-right:58px">
-            <p class="w3-right">Created by Go1den © 2025. All rights reserved.</p>
-        </div>
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:20px;padding-right:58px">
+        <p class="w3-right">Created by Go1den © 2025. All rights reserved.</p>
+    </div>
 
-        <script>
-            // Script to open and close sidebar
-            function w3_open() {
-            document.getElementById("mySidebar").style.display = "block";
-            document.getElementById("myOverlay").style.display = "block";
-            }
-            
-            function w3_close() {
-            document.getElementById("mySidebar").style.display = "none";
-            document.getElementById("myOverlay").style.display = "none";
-            }
-        </script>
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+        }
+        
+        function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+        }
+    </script>
+
     </body>
 </html>
