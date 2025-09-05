@@ -49,3 +49,7 @@ body {
     padding: 4px;
     text-align: center;
 }
+
+#stream {
+    height: 80%;
+}
