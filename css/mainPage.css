@@ -53,3 +53,7 @@ body {
 #stream {
     height: 75vh !important;
 }
+
+#twitch-embed {
+    height: 100%;
+}
