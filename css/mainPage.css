@@ -57,3 +57,20 @@ body {
 #twitch-embed {
     height: 100%;
 }
+
+#footer {
+    margin-top: 20px;
+    padding-right: 58px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.marginTopTen {
+    margin-top: 10px;
+}
+
+.w3-main {
+    margin-left: 300px;
+    margin-right: 40px;
+}

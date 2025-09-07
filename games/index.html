@@ -16,16 +16,16 @@
     <body>
         <!-- Sidebar/menu -->
         <nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
-        <div class="w3-container">
-            <center><a href="../"><img src="../images/goldenlogo.png" onclick="onClick(this)" alt="Go1den.com"/></a></center><br>
-        </div>
-        <div class="w3-bar-block">
-            <a href="/games" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Games</a><br>
-            <a href="/programs" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Programs</a><br>
-            <a href="/speedruns" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Speedruns</a><br> 
-            <a href="/socials" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Socials</a><br> 
-        </div>
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+            <div class="w3-container">
+                <center><a href="../"><img src="../images/goldenlogo.png" onclick="onClick(this)" alt="Go1den.com"/></a></center><br>
+            </div>
+            <div class="w3-bar-block">
+                <a href="/games" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Games</a><br>
+                <a href="/programs" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Programs</a><br>
+                <a href="/speedruns" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Speedruns</a><br> 
+                <a href="/socials" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Socials</a><br> 
+            </div>
         </nav>
 
         <!-- Top menu on small screens -->
@@ -37,39 +37,39 @@
         <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
         <!-- !PAGE CONTENT! -->
-        <div class="w3-main" style="margin-left:340px;margin-right:40px">
+        <div class="w3-main">
 
-        <!-- How to Play -->
-        <div class="w3-container" id="howtoplay" style="margin-top:20px">
-            <h1>Hi. I'm Go1den. Here's some cool stuff for you to enjoy.</h1> 
+            <!-- Intro -->
+            <div class="w3-container marginTopTen" id="intro">
+                <h1>Hi. I'm Go1den. Here's some cool stuff for you to enjoy.</h1> 
+            </div>
+
+            <!-- Games -->
+            <div class="w3-container marginTopTen" id="games">
+                <h1 class="w3-xxlarge"><strong>Games</strong></h1>
+                <hr class="w3-round">
+                <a href="../crosswords"><img src="../crosswords/images/golden-mini-200x200.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="../hivemind"><img src="../hivemind/images/tiles/share/hivemind-200x200.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="../wordwhiz"><img src="../wordwhiz/images/share/wordwhiz-200x200.png"></a>
+            </div>
         </div>
 
-        <!-- Games -->
-        <div class="w3-container" id="games" style="margin-top:20px">
-            <h1 class="w3-xxlarge"><strong>Games</strong></h1>
-            <hr class="w3-round">
-            <a href="../crosswords"><img src="../crosswords/images/golden-mini-200x200.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="../hivemind"><img src="../hivemind/images/tiles/share/hivemind-200x200.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="../wordwhiz"><img src="../wordwhiz/images/share/wordwhiz-200x200.png"></a>
-         </div>
-
     <!-- W3.CSS Container -->
-    <div class="w3-light-grey w3-container" style="margin-top:20px;padding-right:58px">
+    <div class="w3-light-grey w3-container footer">
         <p class="w3-right">Created by Go1den © 2025. All rights reserved.</p>
     </div>
 
     <script>
         // Script to open and close sidebar
         function w3_open() {
-        document.getElementById("mySidebar").style.display = "block";
-        document.getElementById("myOverlay").style.display = "block";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
         }
         
         function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
-        document.getElementById("myOverlay").style.display = "none";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
         }
     </script>
-
     </body>
 </html>
