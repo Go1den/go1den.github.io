@@ -71,6 +71,6 @@ body {
 }
 
 .w3-main {
-    margin-left: 340px;
-    margin-right: 40px;
+    margin-left: 300px !important;
+    margin-right: 40px !important;
 }
